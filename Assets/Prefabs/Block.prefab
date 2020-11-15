@@ -4920,6 +4920,9 @@ MonoBehaviour:
   _currentHits: 0
   _blocksLibrary: {fileID: 11400000, guid: d581fc53dcb05e04d899a0af2b513fbd, type: 2}
   _particleSystem: {fileID: 9110515264233221557}
+  OnBlockBroken:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &7971245874473529046
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4944,7 +4947,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 90, y: 20}
+  m_Size: {x: 88, y: 18}
   m_EdgeRadius: 0
 --- !u!50 &5543987115750571515
 Rigidbody2D:

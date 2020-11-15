@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     private LowerTrigger _lowerTrigger;
 
     [SerializeField]
-    private TextMeshProUGUI _livesCounter;
+    private StatsCounter _statsCounter;
     
     private Vector3 _initialBallPosition;
     
@@ -33,6 +33,13 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _physicsManager.UpdatePhysics();
+        if (_statsCounter.Lives <= 0)
+        {
+            
+        }
+        else
+        {
+            _physicsManager.UpdatePhysics();
+        }
     }
 }

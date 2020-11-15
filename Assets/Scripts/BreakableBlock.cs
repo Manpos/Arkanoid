@@ -1,7 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
+public class SendScore : UnityEvent<int>
+{
+    
+}
 public class BreakableBlock : MonoBehaviour, ICollide
 {
     [SerializeField]
@@ -16,9 +21,12 @@ public class BreakableBlock : MonoBehaviour, ICollide
     [SerializeField]
     private ParticleSystem _particleSystem;
 
+    [SerializeField]
+    private int _blockScore = 300;
+
     private float _particleTime = 2f;
 
-    public UnityEvent OnBlockBroken;
+    private SendScore OnBlockBroken = new SendScore();
     
     // Start is called before the first frame update
     void Start()
@@ -32,6 +40,16 @@ public class BreakableBlock : MonoBehaviour, ICollide
         
     }
 
+    private void OnEnable()
+    {
+        OnBlockBroken.AddListener(StatsCounter.Instance.IncreaseScoreCounter);
+    }
+    
+    private void OnDisable()
+    {
+        OnBlockBroken.RemoveListener(StatsCounter.Instance.IncreaseScoreCounter);
+    }
+
     public void Collision(Vector2 normal)
     {
         _currentHits--;
@@ -39,7 +57,7 @@ public class BreakableBlock : MonoBehaviour, ICollide
         if (_currentHits == 0)
         {
             _particleSystem.Play();
-            OnBlockBroken.Invoke();
+            OnBlockBroken.Invoke(_blockScore);
             _blockImage.gameObject.SetActive(false);
         }
     }
