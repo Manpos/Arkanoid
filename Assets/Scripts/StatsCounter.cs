@@ -1,7 +1,5 @@
-﻿using System;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class StatsCounter : MonoBehaviour
 {
@@ -28,12 +26,6 @@ public class StatsCounter : MonoBehaviour
         _scoreCounter.text += "0";
         _livesCounter.text += _lives;
         _lowerTrigger.OnTriggerActive.AddListener(DecreaseLivesCounter);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
     
     public static StatsCounter Instance

@@ -3,10 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class SendScore : UnityEvent<int>
-{
-    
-}
+public class SendScore : UnityEvent<int> { }
 public class BreakableBlock : MonoBehaviour, ICollide
 {
     [SerializeField]

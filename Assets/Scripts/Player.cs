@@ -3,6 +3,14 @@ using UnityEngine;
 
 public class Player : MovingObject, ICollide
 {
+    [SerializeField]
+    private CapsuleCollider2D _capsule;
+
+    [SerializeField]
+    private RectTransform _rectTransform;
+
+    public CapsuleCollider2D Capsule => _capsule;
+    public RectTransform PlayerRectTransform => _rectTransform;
 
     public bool LeftLimit { get; private set; }
     
