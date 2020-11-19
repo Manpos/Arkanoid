@@ -4917,12 +4917,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _blockImage: {fileID: 3886615593705914205}
+  _collider: {fileID: 7971245874473529046}
   _currentHits: 0
   _blocksLibrary: {fileID: 11400000, guid: d581fc53dcb05e04d899a0af2b513fbd, type: 2}
   _particleSystem: {fileID: 9110515264233221557}
-  OnBlockBroken:
-    m_PersistentCalls:
-      m_Calls: []
+  _blockScore: 300
 --- !u!61 &7971245874473529046
 BoxCollider2D:
   m_ObjectHideFlags: 0

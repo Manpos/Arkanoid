@@ -1,9 +1,8 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public abstract class PowerUp : MonoBehaviour, IPickable
+public abstract class PowerUp : MovingObject, IPickable
 {
     [SerializeField]
     protected Image _powerUpImage;
@@ -12,7 +11,7 @@ public abstract class PowerUp : MonoBehaviour, IPickable
     protected Collider2D _collider;
 
     [SerializeField]
-    protected float _timer;
+    protected float _maxTime;
     
     /// <summary>
     /// Spawn possibility rate on scale from 0 to 1
@@ -20,26 +19,73 @@ public abstract class PowerUp : MonoBehaviour, IPickable
     [SerializeField]
     private float _spawnRate;
 
+    private float _timeRemaining;
+
+    private bool _activeTimer;
+
+    private GameScene _gameScene;
+
     public float SpawnRate => _spawnRate;
-    
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public abstract void OnPickedItem();
 
-    protected void OnCollisionEnter2D(Collision2D other)
+    protected abstract void OnResetPowerUp();
+
+        private void Start()
+    {
+        _gameScene = GameManager.Instance.SceneManager.CurrentScene as GameScene;
+        PhysicsManager.OnPhysics.AddListener(Movement);
+    }
+
+    private void Update()
+    {
+        AppliedForce(Vector2.down);
+        if (_activeTimer) TimerUpdate();
+    }
+
+    protected void OnTriggerEnter2D(Collider2D other)
     {
         {
             if (other.gameObject.CompareTag("Player"))
             {
                 _powerUpImage.enabled = false;
                 _collider.enabled = false;
-                OnPickedItem();
+                
+                SetUpTimer();
             }
         }
+    }
+
+    public abstract void DuplicatedPowerUp(PowerUp previousPowerUp);
+
+    protected void TimerUpdate()
+    {
+        _timeRemaining -= Time.deltaTime;
+    }
+
+    private void SetUpTimer()
+    {
+        _gameScene.PowerUpsManager.AddPowerUp(this);
+        _timeRemaining = _maxTime;
+        _activeTimer = true;
+        StartCoroutine(TimerEnd());
+    }
+
+    private IEnumerator TimerEnd()
+    {
+        yield return new WaitUntil(() => _timeRemaining <= 0f);
+        _gameScene.PowerUpsManager.RemovePowerUp(this);
+        OnResetPowerUp();
+    }
+
+    public void DestroyPowerUp()
+    {
+        Destroy(gameObject);
+    }
+
+    public void UpdateTimerValue(float time)
+    {
+        _timeRemaining = time;
     }
 
 }

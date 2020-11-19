@@ -57,5 +57,6 @@ public class StatsCounter : MonoBehaviour
         _scoreCounter.text = _scoreCounter.text.Replace(_score.ToString(), "");
         _score += score;
         _scoreCounter.text += _score.ToString();
+        
     }
 }

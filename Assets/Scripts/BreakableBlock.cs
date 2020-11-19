@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -8,6 +8,9 @@ public class BreakableBlock : MonoBehaviour, ICollide
 {
     [SerializeField]
     private Image _blockImage;
+
+    [SerializeField]
+    private Collider2D _collider;
 
     [SerializeField]
     private int _currentHits;
@@ -24,17 +27,14 @@ public class BreakableBlock : MonoBehaviour, ICollide
     private float _particleTime = 2f;
 
     private SendScore OnBlockBroken = new SendScore();
+
+    private GameScene _gameScene;
     
     // Start is called before the first frame update
     void Start()
     {
+        _gameScene = GameManager.Instance.SceneManager.CurrentScene as GameScene;
         SetBlockParameters(_currentHits);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void OnEnable()
@@ -55,8 +55,17 @@ public class BreakableBlock : MonoBehaviour, ICollide
         {
             _particleSystem.Play();
             OnBlockBroken.Invoke(_blockScore);
-            _blockImage.gameObject.SetActive(false);
+            _blockImage.enabled = false;
+            _collider.enabled = false;
+            SpawnPowerUp();
+            StartCoroutine(DestroyBlock());
         }
+    }
+
+    private IEnumerator DestroyBlock()
+    {
+        yield return new WaitForSeconds(_particleTime);
+        Destroy(transform.parent.gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -71,5 +80,14 @@ public class BreakableBlock : MonoBehaviour, ICollide
     {
         BlockParameters blockParameters = _blocksLibrary.BlocksParameters.Find(x=> x.BreakingHits == remainingHits);
         _blockImage.color = blockParameters.BlockColor;
+    }
+
+    private void SpawnPowerUp()
+    {
+        PowerUp randomPowerUp = _gameScene.PowerUpsLibrary.GetRandomPowerUp();
+        if (randomPowerUp != null)
+        {
+            Instantiate(randomPowerUp, transform.position, Quaternion.identity, _gameScene.CanvasTransform);
+        }
     }
 }

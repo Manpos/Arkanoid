@@ -18,6 +18,11 @@ public class LowerTrigger : MonoBehaviour
             OnTriggerActive.Invoke();
             other.transform.position = _resetPosition;
         }
+
+        if (other.gameObject.GetComponent<PowerUp>() != null)
+        {
+            Destroy(other.gameObject);
+        }
     }
 
 }

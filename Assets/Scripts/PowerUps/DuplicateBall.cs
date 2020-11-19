@@ -6,12 +6,25 @@ public class DuplicateBall : PowerUp
 {
     public override void OnPickedItem()
     {
-        StartCoroutine(SecondBall(GameManager.Instance.Ball));
+        GameScene currentScene = GameManager.Instance.SceneManager.CurrentScene as GameScene;
+        StartCoroutine(SecondBall(currentScene.Ball));
     }
-    
+
+    protected override void OnResetPowerUp()
+    {
+        
+    }
+
+    public override void DuplicatedPowerUp(PowerUp previousPowerUp)
+    {
+        
+    }
+
     private IEnumerator SecondBall(Ball ball)
     {
         Ball newBall = Instantiate(ball, ball.transform.parent);
-        yield return new WaitForSeconds(_timer);
+        newBall.transform.position = ball.InitialPosition;
+        newBall.AppliedForce(newBall.InitialDirection);
+        yield return new WaitForSeconds(_maxTime);
     }
 }
