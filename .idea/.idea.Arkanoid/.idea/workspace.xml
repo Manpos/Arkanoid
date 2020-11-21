@@ -25,25 +25,21 @@
     <list default="true" id="f94eb776-1412-4836-94a1-9dbc748bb3e9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Arkanoid/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Arkanoid/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Arkanoid/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Arkanoid/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Ball.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Ball.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Ball.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Ball.prefab.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Block.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Block.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ball.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ball.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BlockParameters.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BlockParameters.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/BreakableBlock.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BreakableBlock.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LowerTrigger.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LowerTrigger.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Level.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Level.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Objects/Ball.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Objects/Ball.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Objects/LowerTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Objects/LowerTrigger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Objects/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Objects/Player.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/PowerUps/DuplicateBall.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PowerUps/DuplicateBall.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/PowerUps/LargerPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PowerUps/LargerPlayer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PowerUps/PowerUp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PowerUps/PowerUp.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PowerUps/PowerUpsManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PowerUps/PowerUpsManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scenes/GameScene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Scenes/GameScene.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scenes/Scene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Scenes/Scene.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scenes/SceneManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Scenes/SceneManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/StatsCounter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/StatsCounter.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,20 +50,19 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Physics/MovingObject.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Unity/Hub/Editor/2019.4.11f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/MultipleDisplayUtilities.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Level.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Physics/Wall.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PowerUps/LargerPlayer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PowerUps/IPickable.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PowerUps/PowerUp.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/BlocksLibrary.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BreakableBlock.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Scenes/MenuScene.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PowerUps/DuplicateBall.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/E93AB2F8-5FF8-4881-B6AB-5BA98D373CFC/4a/4f5a8f71/NativeInputSystem.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Physics/ForceVector.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/BlocksLibrary.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PowerUps/PowerUp.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PowerUps/LargerPlayer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Physics/MovingObject.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/LevelsManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -100,23 +95,26 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Physics/Wall.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Physics/PhysicsManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Scenes/MenuScene.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Scenes/Scene.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PickableItem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PowerUps/IPickable.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PowerUps/PowerUpsLibrary.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Ball.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Level.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/StatsCounter.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Scenes/SceneManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PowerUps/PowerUp.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PowerUps/PowerUpsManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Objects/Player.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PowerUps/LargerPlayer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BreakableBlock.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Level.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Objects/Ball.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Scenes/Scene.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Scenes/SceneManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/LevelsManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PowerUps/DuplicateBall.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Objects/LowerTrigger.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Scenes/GameScene.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/PowerUps/DuplicateBall.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/PowerUps/PowerUp.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/PowerUps/LargerPlayer.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/PowerUps/PowerUpsManager.cs" />
       </list>
     </option>
   </component>
@@ -144,10 +142,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="40172">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="40172" />
+      <option name="pid" />
       <option name="selectedOptions">
         <set />
       </option>
@@ -170,6 +168,7 @@
       <workItem from="1605637274868" duration="11926000" />
       <workItem from="1605713812317" duration="7777000" />
       <workItem from="1605799930397" duration="7894000" />
+      <workItem from="1605906393661" duration="13465000" />
     </task>
     <servers />
   </component>
@@ -287,21 +286,24 @@
     </state>
     <state width="1877" height="167" key="GridCell.Tab.3.right/0.0.1920.1050/-1920.7.1920.1050@0.0.1920.1050" timestamp="1605650431553" />
     <state width="1234" height="230" key="GridCell.Tab.3.right/2560.161.1920.1050/0.0.2560.1410@0.0.2560.1410" timestamp="1605476412346" />
-    <state x="-1554" y="309" key="RiderGenerateDialog" timestamp="1605722513109">
-      <screen x="-1920" y="7" width="1920" height="1050" />
+    <state x="488" y="406" key="RiderGenerateDialog" timestamp="1605920698926">
+      <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="-1554" y="309" key="RiderGenerateDialog/0.0.1920.1050/-1920.7.1920.1050@-1920.7.1920.1050" timestamp="1605722513109" />
     <state x="366" y="302" key="RiderGenerateDialog/0.0.1920.1050/-1920.7.1920.1050@0.0.1920.1050" timestamp="1605715779837" />
+    <state x="488" y="406" key="RiderGenerateDialog/0.0.2560.1410/2560.0.1920.1050@0.0.2560.1410" timestamp="1605920698926" />
     <state x="488" y="405" key="RiderGenerateDialog/2560.161.1920.1050/0.0.2560.1410@0.0.2560.1410" timestamp="1605475041738" />
-    <state x="-1304" y="246" key="run.anything.popup" timestamp="1605804410459">
-      <screen x="-1920" y="7" width="1920" height="1050" />
+    <state x="821" y="321" key="run.anything.popup" timestamp="1605915459557">
+      <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="-1304" y="246" key="run.anything.popup/0.0.1920.1050/-1920.7.1920.1050@-1920.7.1920.1050" timestamp="1605804410459" />
-    <state x="-1084" y="312" width="672" height="505" key="search.everywhere.popup" timestamp="1605805124931">
-      <screen x="-1920" y="7" width="1920" height="1050" />
+    <state x="821" y="321" key="run.anything.popup/0.0.2560.1410/2560.0.1920.1050@0.0.2560.1410" timestamp="1605915459557" />
+    <state x="1115" y="410" width="896" height="679" key="search.everywhere.popup" timestamp="1605920822604">
+      <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="-1084" y="312" width="672" height="505" key="search.everywhere.popup/0.0.1920.1050/-1920.7.1920.1050@-1920.7.1920.1050" timestamp="1605805124931" />
     <state x="836" y="305" width="672" height="505" key="search.everywhere.popup/0.0.1920.1050/-1920.7.1920.1050@0.0.1920.1050" timestamp="1605803538111" />
+    <state x="1115" y="410" width="896" height="679" key="search.everywhere.popup/0.0.2560.1410/2560.0.1920.1050@0.0.2560.1410" timestamp="1605920822604" />
     <state x="1114" y="409" width="672" height="678" key="search.everywhere.popup/2560.161.1920.1050/0.0.2560.1410@0.0.2560.1410" timestamp="1605475712262" />
   </component>
   <component name="XDebuggerManager">
@@ -310,14 +312,7 @@
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/PowerUps/PowerUp.cs</url>
           <line>87</line>
-          <properties documentPath="C:\Users\mique\Documents\GameJam\Arkanoid\Assets\Scripts\PowerUps\PowerUp.cs" initialLine="80">
-            <startOffsets>
-              <option value="1957" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1979" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="C:\Users\mique\Documents\GameJam\Arkanoid\Assets\Scripts\PowerUps\PowerUp.cs" initialLine="80" />
           <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>

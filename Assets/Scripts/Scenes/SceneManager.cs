@@ -11,7 +11,7 @@ public class SceneManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        _currentScene.LoadScene();
     }
 
     // Update is called once per frame
@@ -19,12 +19,5 @@ public class SceneManager : MonoBehaviour
     {
         
     }
-
-    public void ChangeScene(Scene nextScene)
-    {
-        _currentScene.UnloadScene();
-        nextScene.LoadScene();
-        _currentScene = nextScene;
-        UnityEngine.SceneManagement.SceneManager.LoadScene(nextScene.SceneId);
-    }
+    
 }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class Ball : MovingObject, ICollide
 {
@@ -12,10 +13,15 @@ public class Ball : MovingObject, ICollide
     public Vector3 InitialPosition => _initialPosition;
 
     private Vector2 _previousDirection;
-    private void Start()
+
+    private void Awake()
     {
         _initialPosition = transform.position;
         _previousDirection = _initialDirection;
+    }
+
+    private void Start()
+    {
         PhysicsManager.OnPhysics.AddListener(Movement);
         AppliedForce(_previousDirection);
     }
@@ -23,6 +29,16 @@ public class Ball : MovingObject, ICollide
     private void Update()
     {
         AppliedForce(_previousDirection);
+    }
+
+    public void ResetDirection()
+    {
+        _previousDirection = _initialDirection;
+    }
+
+    public void ResetPosition()
+    {
+        transform.position = _initialPosition;
     }
 
     public void Collision(Vector2 normal)

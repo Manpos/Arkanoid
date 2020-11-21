@@ -7,9 +7,15 @@ public class Player : MovingObject, ICollide
     private CapsuleCollider2D _capsule;
 
     [SerializeField]
+    private EdgeCollider2D _edgeCollider;
+
+    [SerializeField]
     private RectTransform _rectTransform;
 
     public CapsuleCollider2D Capsule => _capsule;
+
+    public EdgeCollider2D EdgeCollider => _edgeCollider;
+
     public RectTransform PlayerRectTransform => _rectTransform;
 
     public bool LeftLimit { get; private set; }

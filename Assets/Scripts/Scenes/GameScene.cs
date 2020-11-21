@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class GameScene : Scene
@@ -10,7 +9,7 @@ public class GameScene : Scene
     private Player _player;
     
     [SerializeField]
-    private Ball _ball;
+    private Ball _ballPrefab;
     
     [SerializeField]
     private LowerTrigger _lowerTrigger;
@@ -25,20 +24,27 @@ public class GameScene : Scene
     private PowerUpsLibrary _powerUpsLibrary;
 
     [SerializeField]
+    private RectTransform _gameScreen;
+
+    [SerializeField]
     private RectTransform _canvasTransform;
 
-    public PowerUpsLibrary PowerUpsLibrary => _powerUpsLibrary;
+    [SerializeField]
+    private LevelsManager _levelsManager;
 
-    public PowerUpsManager PowerUpsManager { get; } = new PowerUpsManager();
-
-    public RectTransform CanvasTransform => _canvasTransform;
+    [SerializeField]
+    private List<Ball> _instancedBalls = new List<Ball>();
 
     #endregion
 
     #region Consultors
 
+    public PowerUpsLibrary PowerUpsLibrary => _powerUpsLibrary;
+    public PowerUpsManager PowerUpsManager { get; } = new PowerUpsManager();
+    public RectTransform CanvasTransform => _canvasTransform;
+    
     public Player Player => _player;
-    public Ball Ball => _ball;
+    public Ball BallPrefab => _ballPrefab;
 
     #endregion
     
@@ -46,29 +52,53 @@ public class GameScene : Scene
     // Start is called before the first frame update
     void Start()
     {
-        
+        InstantiateBall();
+        _lowerTrigger.OnBallEnter.AddListener(ResetBall);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (_statsCounter.Lives <= 0)
-        {
-            Debug.Log("GAME OVER");
-        }
-        else
-        {
-            _physicsManager.UpdatePhysics();
-        }
+        if (_statsCounter.Lives <= 0 || _levelsManager.ChangingLevel) return;
+        _physicsManager.UpdatePhysics();
     }
 
     public override void LoadScene()
     {
-        _lowerTrigger.SetResetPosition(_ball.InitialPosition);
+        _lowerTrigger.SetResetPosition(_ballPrefab.InitialPosition);
     }
 
     public override void UnloadScene()
     {
         
     }
+
+    public void DestroyBall(Ball ball)
+    {
+        _instancedBalls.Remove(ball);
+        Destroy(ball.gameObject);
+    }
+
+    public void DestroyAllBalls()
+    {
+        foreach (Ball ball in _instancedBalls)
+        {
+            Destroy(ball.gameObject);
+        }
+        _instancedBalls.Clear();
+    }
+
+    public void InstantiateBall()
+    {
+        Ball newBall = Instantiate(_ballPrefab, _gameScreen);
+        _instancedBalls.Add(newBall);
+    }
+
+    public void ResetBall(Ball ball)
+    {
+        DestroyBall(ball);
+        if (_instancedBalls.Count > 0) return;
+        InstantiateBall();
+    }
+    
 }

@@ -21,6 +21,8 @@ public class LargerPlayer : PowerUp
     {
         _player.Capsule.size = _colliderOriginalSize;
         _player.PlayerRectTransform.sizeDelta = _rectOriginalSize;
+        _player.Capsule.enabled = false;
+        _player.EdgeCollider.enabled = true;
     }
 
     public override void DuplicatedPowerUp(PowerUp previousPowerUp)
@@ -31,6 +33,8 @@ public class LargerPlayer : PowerUp
     private void EnlargePlayer(Player player)
     {
         _player = player;
+        _player.Capsule.enabled = true;
+        _player.EdgeCollider.enabled = false;
         _colliderOriginalSize = player.Capsule.size;
         _rectOriginalSize = player.PlayerRectTransform.sizeDelta;
         player.Capsule.size = new Vector2(_colliderOriginalSize.x * _sizeMultiplier, _colliderOriginalSize.y);

@@ -10,7 +10,7 @@ public class BreakableBlock : MonoBehaviour, ICollide
     private Image _blockImage;
 
     [SerializeField]
-    private Collider2D _collider;
+    private BoxCollider2D _collider;
 
     [SerializeField]
     private int _currentHits;
@@ -26,6 +26,8 @@ public class BreakableBlock : MonoBehaviour, ICollide
 
     private float _particleTime = 2f;
 
+    private float _marginProportion = 0.98f;
+
     private SendScore OnBlockBroken = new SendScore();
 
     private GameScene _gameScene;
@@ -35,6 +37,7 @@ public class BreakableBlock : MonoBehaviour, ICollide
     {
         _gameScene = GameManager.Instance.SceneManager.CurrentScene as GameScene;
         SetBlockParameters(_currentHits);
+        StartCoroutine(UpdateColliderSize());
     }
 
     private void OnEnable()
@@ -49,6 +52,7 @@ public class BreakableBlock : MonoBehaviour, ICollide
 
     public void Collision(Vector2 normal)
     {
+        if(_currentHits == 0) return;
         _currentHits--;
         SetBlockParameters(_currentHits);
         if (_currentHits == 0)
@@ -89,5 +93,11 @@ public class BreakableBlock : MonoBehaviour, ICollide
         {
             Instantiate(randomPowerUp, transform.position, Quaternion.identity, _gameScene.CanvasTransform);
         }
+    }
+
+    private IEnumerator UpdateColliderSize()
+    {
+        yield return new WaitForEndOfFrame();
+        _collider.size = _blockImage.rectTransform.rect.size * _marginProportion;
     }
 }

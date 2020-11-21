@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class DuplicateBall : PowerUp
 {
+    private GameScene _gameScene;
     public override void OnPickedItem()
     {
-        GameScene currentScene = GameManager.Instance.SceneManager.CurrentScene as GameScene;
-        StartCoroutine(SecondBall(currentScene.Ball));
+        _gameScene = GameManager.Instance.SceneManager.CurrentScene as GameScene;
+        SecondBall();
     }
 
     protected override void OnResetPowerUp()
@@ -20,11 +21,9 @@ public class DuplicateBall : PowerUp
         
     }
 
-    private IEnumerator SecondBall(Ball ball)
+    private void SecondBall()
     {
-        Ball newBall = Instantiate(ball, ball.transform.parent);
-        newBall.transform.position = ball.InitialPosition;
-        newBall.AppliedForce(newBall.InitialDirection);
-        yield return new WaitForSeconds(_maxTime);
+        _gameScene.InstantiateBall();
+        Destroy(gameObject);
     }
 }

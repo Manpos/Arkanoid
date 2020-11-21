@@ -4,10 +4,6 @@ using UnityEngine;
 
 public abstract class Scene : MonoBehaviour
 {
-    protected int _sceneId;
-
-    public int SceneId => _sceneId;
-
     protected Scene _nextScene;
     protected Scene _previousScene;
     // Start is called before the first frame update
