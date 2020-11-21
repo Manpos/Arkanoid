@@ -91,7 +91,7 @@ public class BreakableBlock : MonoBehaviour, ICollide
         PowerUp randomPowerUp = _gameScene.PowerUpsLibrary.GetRandomPowerUp();
         if (randomPowerUp != null)
         {
-            Instantiate(randomPowerUp, transform.position, Quaternion.identity, _gameScene.CanvasTransform);
+            _gameScene.AddPowerUp(Instantiate(randomPowerUp, transform.position, Quaternion.identity, _gameScene.CanvasTransform));
         }
     }
 

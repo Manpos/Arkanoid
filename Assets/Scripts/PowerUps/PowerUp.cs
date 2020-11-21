@@ -56,7 +56,10 @@ public abstract class PowerUp : MovingObject, IPickable
         }
     }
 
-    public abstract void DuplicatedPowerUp(PowerUp previousPowerUp);
+    public virtual void DuplicatedPowerUp(PowerUp previousPowerUp)
+    {
+        DestroyPowerUp();
+    }
 
     protected void TimerUpdate()
     {
@@ -80,7 +83,7 @@ public abstract class PowerUp : MovingObject, IPickable
 
     public void DestroyPowerUp()
     {
-        Destroy(gameObject);
+        _gameScene.DestroyPowerUp(this);
     }
 
     public void UpdateTimerValue(float time)

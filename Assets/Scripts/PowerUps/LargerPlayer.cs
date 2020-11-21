@@ -28,6 +28,7 @@ public class LargerPlayer : PowerUp
     public override void DuplicatedPowerUp(PowerUp previousPowerUp)
     {
         previousPowerUp.UpdateTimerValue(_maxTime);
+        base.DuplicatedPowerUp(previousPowerUp);
     }
 
     private void EnlargePlayer(Player player)

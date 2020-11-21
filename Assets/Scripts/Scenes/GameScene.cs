@@ -34,6 +34,9 @@ public class GameScene : Scene
 
     [SerializeField]
     private List<Ball> _instancedBalls = new List<Ball>();
+    
+    [SerializeField]
+    private List<PowerUp> _instancedPowerUps = new List<PowerUp>();
 
     #endregion
 
@@ -100,5 +103,29 @@ public class GameScene : Scene
         if (_instancedBalls.Count > 0) return;
         InstantiateBall();
     }
-    
+
+    public void ResetPlayer()
+    {
+        _player.PlayerRectTransform.position = _player.InitialPosition;
+    }
+
+    public void AddPowerUp(PowerUp powerUp)
+    {
+        _instancedPowerUps.Add(powerUp);
+    }
+
+    public void DestroyPowerUp(PowerUp powerUp)
+    {
+        _instancedPowerUps.Remove(powerUp);
+        Destroy(powerUp.gameObject);
+    }
+
+    public void DestroyPowerUps()
+    {
+        foreach (PowerUp powerUp in _instancedPowerUps)
+        {
+            Destroy(powerUp.gameObject);
+        }
+        _instancedPowerUps.Clear();
+    }
 }

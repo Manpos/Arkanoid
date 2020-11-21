@@ -23,23 +23,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f94eb776-1412-4836-94a1-9dbc748bb3e9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Arkanoid/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Arkanoid/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Arkanoid/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Arkanoid/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Ball.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Ball.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Ball.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Ball.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Block.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Block.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/BreakableBlock.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BreakableBlock.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Level.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Level.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Objects/Ball.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Objects/Ball.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Objects/LowerTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Objects/LowerTrigger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LevelsManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LevelsManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Objects/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Objects/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PowerUps/DuplicateBall.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PowerUps/DuplicateBall.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PowerUps/LargerPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PowerUps/LargerPlayer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scenes/GameScene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Scenes/GameScene.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scenes/Scene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Scenes/Scene.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scenes/SceneManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Scenes/SceneManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,16 +93,16 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/StatsCounter.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PowerUps/PowerUp.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PowerUps/PowerUpsManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Objects/Player.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PowerUps/LargerPlayer.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BreakableBlock.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Level.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Objects/Ball.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Scenes/Scene.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Scenes/SceneManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/LevelsManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PowerUps/DuplicateBall.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Objects/LowerTrigger.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Objects/Player.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/LevelsManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BreakableBlock.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Scenes/GameScene.cs" />
       </list>
     </option>
@@ -169,6 +158,7 @@
       <workItem from="1605713812317" duration="7777000" />
       <workItem from="1605799930397" duration="7894000" />
       <workItem from="1605906393661" duration="13465000" />
+      <workItem from="1605954505756" duration="3867000" />
     </task>
     <servers />
   </component>
@@ -298,12 +288,12 @@
     </state>
     <state x="-1304" y="246" key="run.anything.popup/0.0.1920.1050/-1920.7.1920.1050@-1920.7.1920.1050" timestamp="1605804410459" />
     <state x="821" y="321" key="run.anything.popup/0.0.2560.1410/2560.0.1920.1050@0.0.2560.1410" timestamp="1605915459557" />
-    <state x="1115" y="410" width="896" height="679" key="search.everywhere.popup" timestamp="1605920822604">
+    <state x="1115" y="410" width="896" height="679" key="search.everywhere.popup" timestamp="1605955059362">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="-1084" y="312" width="672" height="505" key="search.everywhere.popup/0.0.1920.1050/-1920.7.1920.1050@-1920.7.1920.1050" timestamp="1605805124931" />
     <state x="836" y="305" width="672" height="505" key="search.everywhere.popup/0.0.1920.1050/-1920.7.1920.1050@0.0.1920.1050" timestamp="1605803538111" />
-    <state x="1115" y="410" width="896" height="679" key="search.everywhere.popup/0.0.2560.1410/2560.0.1920.1050@0.0.2560.1410" timestamp="1605920822604" />
+    <state x="1115" y="410" width="896" height="679" key="search.everywhere.popup/0.0.2560.1410/2560.0.1920.1050@0.0.2560.1410" timestamp="1605955059362" />
     <state x="1114" y="409" width="672" height="678" key="search.everywhere.popup/2560.161.1920.1050/0.0.2560.1410@0.0.2560.1410" timestamp="1605475712262" />
   </component>
   <component name="XDebuggerManager">

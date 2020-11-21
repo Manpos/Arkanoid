@@ -21,10 +21,13 @@ public class Player : MovingObject, ICollide
     public bool LeftLimit { get; private set; }
     
     public bool RightLimit { get; private set; }
+    
+    public Vector3 InitialPosition { get; private set; } 
 
     private void Start()
     {
         PhysicsManager.OnPhysics.AddListener(Movement);
+        InitialPosition = _rectTransform.position;
     }
     
     public void Collision(Vector2 normal)

@@ -47,6 +47,8 @@ public class LevelsManager : MonoBehaviour
     private IEnumerator LevelTransition()
     {
         _gameScene.DestroyAllBalls();
+        _gameScene.ResetPlayer();
+        _gameScene.DestroyPowerUps();
         yield return _levelDelay;
         SetLevelProperties();
         _levelTransition.SetActive(false);
