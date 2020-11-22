@@ -23,7 +23,7 @@ public class InputManager : MonoBehaviour
     public UnityEvent OnUpPressed;
     public UnityEvent OnDownPressed;
     
-    public UnityEvent OnPausePressed;
+    public UnityEvent OnResetPressed;
 
     /// <summary>
     /// Current control schemes displayed (for the character, for the menu, etc)
@@ -47,7 +47,7 @@ public class InputManager : MonoBehaviour
             [Controls.Control.Right] = OnRightPressed,
             [Controls.Control.Up] = OnUpPressed,
             [Controls.Control.Down] = OnDownPressed,
-            [Controls.Control.Pause] = OnPausePressed,
+            [Controls.Control.Reset] = OnResetPressed,
         };
         
         foreach (BaseInput input in _inputs)

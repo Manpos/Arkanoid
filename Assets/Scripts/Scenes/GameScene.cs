@@ -31,23 +31,20 @@ public class GameScene : Scene
 
     [SerializeField]
     private LevelsManager _levelsManager;
-
-    [SerializeField]
-    private List<Ball> _instancedBalls = new List<Ball>();
     
-    [SerializeField]
-    private List<PowerUp> _instancedPowerUps = new List<PowerUp>();
+    private readonly List<Ball> _instancedBalls = new List<Ball>();
+    
+    private readonly List<PowerUp> _instancedPowerUps = new List<PowerUp>();
 
     #endregion
 
     #region Consultors
 
+    public StatsCounter StatsCounter => _statsCounter;
     public PowerUpsLibrary PowerUpsLibrary => _powerUpsLibrary;
     public PowerUpsManager PowerUpsManager { get; } = new PowerUpsManager();
     public RectTransform CanvasTransform => _canvasTransform;
-    
     public Player Player => _player;
-    public Ball BallPrefab => _ballPrefab;
 
     #endregion
     
@@ -55,25 +52,39 @@ public class GameScene : Scene
     // Start is called before the first frame update
     void Start()
     {
-        InstantiateBall();
         _lowerTrigger.OnBallEnter.AddListener(ResetBall);
+        _levelsManager.OnLastLevel.AddListener(OnNextScene.Invoke);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (_statsCounter.Lives <= 0 || _levelsManager.ChangingLevel) return;
+        if (_levelsManager.ChangingLevel)
+        {
+            return;
+        }
+
+        if (_statsCounter.Lives <= 0)
+        {
+            Destroy(_levelsManager.CurrentLevel.gameObject);
+            OnNextScene.Invoke();
+        }
         _physicsManager.UpdatePhysics();
     }
 
     public override void LoadScene()
     {
+        _levelsManager.InitializeLevelsManager();
+        InstantiateBall();
         _lowerTrigger.SetResetPosition(_ballPrefab.InitialPosition);
+        _statsCounter.ResetCounters();
     }
 
     public override void UnloadScene()
     {
-        
+        DestroyAllBalls();
+        DestroyPowerUps();
+        ResetPlayer();
     }
 
     public void DestroyBall(Ball ball)

@@ -1,23 +1,21 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Events;
 
 public abstract class Scene : MonoBehaviour
 {
+    public UnityEvent OnNextScene = new UnityEvent();
+    
+    [SerializeField]
     protected Scene _nextScene;
-    protected Scene _previousScene;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    
+    [SerializeField]
+    protected GameObject _sceneContainer;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    public GameObject SceneContainer => _sceneContainer;
+    
+    public Scene NextScene => _nextScene;
+    
     public abstract void LoadScene();
     public abstract void UnloadScene();
+    
 }

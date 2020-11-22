@@ -22,8 +22,12 @@
             <e p="PauseController.cs" t="Include" />
             <e p="PlayerController.cs" t="Include" />
           </e>
-          <e p="Level.cs" t="Include" />
-          <e p="LevelsManager.cs" t="Include" />
+          <e p="Level" t="Include">
+            <e p="IndexedLevel.cs" t="Include" />
+            <e p="Level.cs" t="Include" />
+            <e p="LevelsLibrary.cs" t="Include" />
+            <e p="LevelsManager.cs" t="Include" />
+          </e>
           <e p="Objects" t="Include">
             <e p="Ball.cs" t="Include" />
             <e p="BlockParameters.cs" t="Include" />
@@ -48,9 +52,9 @@
             <e p="PowerUpsManager.cs" t="Include" />
           </e>
           <e p="Scenes" t="Include">
+            <e p="EndScene.cs" t="Include" />
             <e p="GameScene.cs" t="Include" />
             <e p="MenuScene.cs" t="Include" />
-            <e p="RankingScene.cs" t="Include" />
             <e p="Scene.cs" t="Include" />
             <e p="SceneManager.cs" t="Include" />
           </e>

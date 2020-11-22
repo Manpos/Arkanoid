@@ -14,14 +14,14 @@ public class PlayerController : Controller
     {
         _inputManager.OnLeftPressed.AddListener(Left);
         _inputManager.OnRightPressed.AddListener(Right);
-        _inputManager.OnPausePressed.AddListener(Pause);
+        _inputManager.OnResetPressed.AddListener(ResetGame);
     }
 
     private void OnDisable()
     {
         _inputManager.OnLeftPressed.RemoveListener(Left);
         _inputManager.OnRightPressed.RemoveListener(Right);
-        _inputManager.OnPausePressed.RemoveListener(Pause);
+        _inputManager.OnResetPressed.RemoveListener(ResetGame);
     }
 
     public override void Left()
@@ -50,9 +50,10 @@ public class PlayerController : Controller
         
     }
 
-    public override void Pause()
+    public override void ResetGame()
     {
-        
+        UnityEngine.SceneManagement.Scene scene = UnityEngine.SceneManagement.SceneManager.GetActiveScene(); 
+        UnityEngine.SceneManagement.SceneManager.LoadScene(scene.name);
     }
     
 }

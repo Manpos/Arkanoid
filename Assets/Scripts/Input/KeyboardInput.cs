@@ -21,7 +21,7 @@ public class KeyboardInput : BaseInput
             [KeyCode.S] = DownButtonCallback,
             [KeyCode.DownArrow] = DownButtonCallback,
             
-            [KeyCode.Escape] = PauseButtonCallback, 
+            [KeyCode.Escape] = ResetButtonCallback, 
         };
     }
 }

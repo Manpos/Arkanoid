@@ -5,7 +5,7 @@ using UnityEngine.Events;
 public class Level : MonoBehaviour
 {
     public UnityEvent OnNextLevel = new UnityEvent();
-    
+
     [SerializeField]
     private RectTransform _parent;
     
@@ -13,9 +13,9 @@ public class Level : MonoBehaviour
     private RectTransform _destroyableBlocksParent;
 
     [SerializeField]
-    private Level _nextLevel;
+    private int _nextLevel;
 
-    public Level NextLevel => _nextLevel;
+    public int NextLevel => _nextLevel;
 
     public RectTransform Parent => _parent;
 

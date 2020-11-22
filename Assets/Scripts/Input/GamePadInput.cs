@@ -21,7 +21,7 @@ public class GamePadInput : BaseInput
             [KeyCode.Joystick1Button0] = DownButtonCallback,
             [KeyCode.DownArrow] = DownButtonCallback,
             
-            [KeyCode.Escape] = PauseButtonCallback, 
+            [KeyCode.Escape] = ResetButtonCallback, 
         };
     }
 }

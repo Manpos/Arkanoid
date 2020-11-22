@@ -42,6 +42,14 @@ public class Player : MovingObject, ICollide
         }
     }
 
+    public override void AppliedForce(Vector2 direction)
+    {
+        if (_appliedForces.Count == 0)
+        {
+            _appliedForces.Enqueue(direction);
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.GetComponent<ICollide>() != null && other.gameObject.CompareTag("Wall"))

@@ -10,6 +10,6 @@ public class Controls
         Right,
         Up,
         Down,
-        Pause,
+        Reset,
     }
 }

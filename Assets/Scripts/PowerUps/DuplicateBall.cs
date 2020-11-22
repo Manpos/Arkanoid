@@ -24,6 +24,6 @@ public class DuplicateBall : PowerUp
     private void SecondBall()
     {
         _gameScene.InstantiateBall();
-        Destroy(gameObject);
+        _gameScene.PowerUpsManager.RemovePowerUp(this);
     }
 }

@@ -11,7 +11,7 @@ public abstract class BaseInput : MonoBehaviour
     protected UnityEvent UpButtonCallback = new UnityEvent();
     protected UnityEvent DownButtonCallback = new UnityEvent();
 
-    protected UnityEvent PauseButtonCallback = new UnityEvent();
+    protected UnityEvent ResetButtonCallback = new UnityEvent();
     
     public Dictionary<Controls.Control, UnityEvent> _controlsCallback;
     
@@ -36,7 +36,7 @@ public abstract class BaseInput : MonoBehaviour
             [Controls.Control.Right] = RightButtonCallback,
             [Controls.Control.Up] = UpButtonCallback,
             [Controls.Control.Down] = DownButtonCallback,
-            [Controls.Control.Pause] = PauseButtonCallback,
+            [Controls.Control.Reset] = ResetButtonCallback,
         };
     }
 

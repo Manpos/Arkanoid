@@ -25,7 +25,8 @@ public class LowerTrigger : MonoBehaviour
 
         if (other.gameObject.GetComponent<PowerUp>() != null)
         {
-            Destroy(other.gameObject);
+            GameScene gameScene = GameManager.Instance.SceneManager.CurrentScene as GameScene;
+            gameScene.PowerUpsManager.RemovePowerUp(other.gameObject.GetComponent<PowerUp>());
         }
     }
 

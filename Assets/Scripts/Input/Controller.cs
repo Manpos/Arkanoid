@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.PlayerLoop;
+﻿using UnityEngine;
 
 public abstract class Controller : MonoBehaviour
 {
@@ -13,5 +10,5 @@ public abstract class Controller : MonoBehaviour
     
     public abstract void Down();
 
-    public abstract void Pause();
+    public abstract void ResetGame();
 }
