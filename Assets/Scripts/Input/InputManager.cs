@@ -3,83 +3,97 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class InputManager : MonoBehaviour
+namespace Input
 {
-    
-    public enum ControllerId
+    public class InputManager : MonoBehaviour
     {
-        Player,
-        PauseMenu
-    }
+        /// <summary>
+        /// Supported inputs
+        /// </summary>
+        private List<BaseInput> _inputs;
+
+        private Dictionary<Controls.Control, UnityEvent> _controlActions;
+
+        /// <summary>
+        /// Event shoot when the Left button is pressed
+        /// </summary>
+        public UnityEvent OnLeftPressed;
+        /// <summary>
+        /// Event shoot when the Right button is pressed
+        /// </summary>
+        public UnityEvent OnRightPressed;
+        /// <summary>
+        /// Event shoot when the Up button is pressed
+        /// </summary>
+        public UnityEvent OnUpPressed;
+        /// <summary>
+        /// Event shoot when the Down button is pressed
+        /// </summary>
+        public UnityEvent OnDownPressed;
     
-    [SerializeField]
-    private List<BaseInput> _inputs;
+        /// <summary>
+        /// Event shoot when the Reset button is pressed
+        /// </summary>
+        public UnityEvent OnResetPressed;
 
-    private Dictionary<Controls.Control, UnityEvent> _controlActions;
-    private Dictionary<ControllerId, Controller> _controllers;
-    
-    public UnityEvent OnLeftPressed;
-    public UnityEvent OnRightPressed;
-    public UnityEvent OnUpPressed;
-    public UnityEvent OnDownPressed;
-    
-    public UnityEvent OnResetPressed;
+        /// <summary>
+        /// Current control schemes used (for the character, for the menu, etc)
+        /// </summary>
+        private Controller _currentController;
 
-    /// <summary>
-    /// Current control schemes displayed (for the character, for the menu, etc)
-    /// </summary>
-    private Controller _currentController;
-
-    private List<InputCallBackAction> _inputCallBackActions = new List<InputCallBackAction>();
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        _controllers = new Dictionary<ControllerId, Controller>
-        {
-            [ControllerId.Player] = new PlayerController(),
-            [ControllerId.PauseMenu] = new PauseController(),
-        };
+        /// <summary>
+        /// List containing the related inputs and events
+        /// </summary>
+        private readonly List<InputCallBackAction> _inputCallBackActions = new List<InputCallBackAction>();
         
-        _controlActions = new Dictionary<Controls.Control, UnityEvent>
+        void Start()
         {
-            [Controls.Control.Left] = OnLeftPressed,
-            [Controls.Control.Right] = OnRightPressed,
-            [Controls.Control.Up] = OnUpPressed,
-            [Controls.Control.Down] = OnDownPressed,
-            [Controls.Control.Reset] = OnResetPressed,
-        };
-        
-        foreach (BaseInput input in _inputs)
-        {
-            input.Initialize();
-        }
-        
-        SubscribeElements();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        foreach (BaseInput input in _inputs)
-        {
-            input.CheckPressedKeys();
-        }
-    }
-
-    private void SubscribeElements()
-    {
-        int controlsLenght = Enum.GetNames(typeof(Controls.Control)).Length;
-        
-        foreach (BaseInput input in _inputs)
-        {
-            for (int i = 0; i < controlsLenght; i++)
+            _inputs = new List<BaseInput>()
             {
-                _inputCallBackActions.Add(new InputCallBackAction(
-                    input._controlsCallback[(Controls.Control) i] ,
-                    _controlActions[(Controls.Control) i]));
+                new KeyboardInput(),
+                new GamePadInput(),
+            };
+        
+            _controlActions = new Dictionary<Controls.Control, UnityEvent>
+            {
+                [Controls.Control.Left] = OnLeftPressed,
+                [Controls.Control.Right] = OnRightPressed,
+                [Controls.Control.Up] = OnUpPressed,
+                [Controls.Control.Down] = OnDownPressed,
+                [Controls.Control.Reset] = OnResetPressed,
+            };
+        
+            foreach (BaseInput input in _inputs)
+            {
+                input.Initialize();
             }
+        
+            SubscribeElements();
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            foreach (BaseInput input in _inputs)
+            {
+                input.CheckPressedKeys();
+            }
+        }
+
+        private void SubscribeElements()
+        {
+            int controlsLenght = Enum.GetNames(typeof(Controls.Control)).Length;
+        
+            foreach (BaseInput input in _inputs)
+            {
+                for (int i = 0; i < controlsLenght; i++)
+                {
+                    _inputCallBackActions.Add(new InputCallBackAction(
+                        input.ControlsCallback[(Controls.Control) i] ,
+                        _controlActions[(Controls.Control) i]));
+                }
             
+            }
         }
     }
 }

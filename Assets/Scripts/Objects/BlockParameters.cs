@@ -1,16 +1,33 @@
 ﻿using System;
 using UnityEngine;
 
-[Serializable]
-public class BlockParameters
+namespace Objects
 {
-    [SerializeField]
-    private int _breakingHits;
+    [Serializable]
+    public class BlockParameters
+    {
+        #region Serialized Fields
 
-    [SerializeField]
-    private Color _blockColor;
+        [SerializeField]
+        private int _breakingHits;
 
-    public Color BlockColor => _blockColor;
+        [SerializeField]
+        private Color _blockColor;
 
-    public int BreakingHits => _breakingHits;
+        #endregion
+
+        #region Consultors
+
+        /// <summary>
+        /// Number if hits to be destroyed
+        /// </summary>
+        public int BreakingHits => _breakingHits;
+        
+        /// <summary>
+        /// Color of the block
+        /// </summary>
+        public Color BlockColor => _blockColor;
+
+        #endregion
+    }
 }

@@ -1,26 +1,30 @@
 ﻿using System.Collections.Generic;
 
-public class PowerUpsManager
+namespace PowerUps
 {
-    private List<PowerUp> _activePowerUps = new List<PowerUp>();
-    
-    public void AddPowerUp(PowerUp powerUp)
+    public class PowerUpsManager
     {
-        PowerUp duplicatedPowerUp = _activePowerUps.Find(x => x.GetType() == powerUp.GetType());
-        if (duplicatedPowerUp == null)
+        private List<PowerUp> _activePowerUps = new List<PowerUp>();
+    
+        public void AddPowerUp(PowerUp powerUp)
         {
-            powerUp.OnPickedItem();
-            _activePowerUps.Add(powerUp);
+            PowerUp duplicatedPowerUp = _activePowerUps.Find(x => x.GetType() == powerUp.GetType());
+            if (duplicatedPowerUp == null)
+            {
+                powerUp.OnPickedItem();
+                _activePowerUps.Add(powerUp);
+            }
+            else
+            {
+                powerUp.DuplicatedPowerUp(duplicatedPowerUp);
+                powerUp.DestroyPowerUp();
+            }
         }
-        else
+
+        public void RemovePowerUp(PowerUp powerUp)
         {
-            powerUp.DuplicatedPowerUp(duplicatedPowerUp);
+            _activePowerUps.Remove(powerUp);
             powerUp.DestroyPowerUp();
         }
-    }
-
-    public void RemovePowerUp(PowerUp powerUp)
-    {
-        _activePowerUps.Remove(powerUp);
     }
 }

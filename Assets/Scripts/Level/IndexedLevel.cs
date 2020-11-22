@@ -1,15 +1,24 @@
 ﻿using UnityEngine;
 
-[System.Serializable]
-public class IndexedLevel
+namespace Level
 {
-    [SerializeField]
-    private int _index;
+    [System.Serializable]
+    public class IndexedLevel
+    {
+        [SerializeField]
+        private int _index;
 
-    [SerializeField]
-    private Level _level;
-    
-    public int Index => _index;
+        [SerializeField]
+        private GameLevel _level;
+        
+        /// <summary>
+        /// Index identifying the current level
+        /// </summary>
+        public int Index => _index;
 
-    public Level Level => _level;
+        /// <summary>
+        /// Reference to the actual level
+        /// </summary>
+        public GameLevel Level => _level;
+    }
 }

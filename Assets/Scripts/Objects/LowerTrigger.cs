@@ -1,33 +1,38 @@
-﻿using UnityEngine;
+﻿using PowerUps;
+using Scenes;
+using UnityEngine;
 using UnityEngine.Events;
 
-public class BallEnterEvent : UnityEvent<Ball> { }
+namespace Objects {
+    public class BallEnterEvent : UnityEvent<Ball> { }
 
-public class LowerTrigger : MonoBehaviour
-{
-    public UnityEvent OnTriggerActive;
-    public BallEnterEvent OnBallEnter = new BallEnterEvent();
-    private Vector3 _resetPosition;
-    
-    public void SetResetPosition(Vector3 resetPosition)
+    public class LowerTrigger : MonoBehaviour
     {
-        _resetPosition = resetPosition;
-    }
+        #region Events
+        
+        public UnityEvent OnTriggerActive;
+        public BallEnterEvent OnBallEnter = new BallEnterEvent();
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.GetComponent<ICollide>() != null && other.gameObject.CompareTag("Ball"))
+        #endregion
+
+        #region Other methods
+
+        private void OnTriggerEnter2D(Collider2D other)
         {
-            OnTriggerActive.Invoke();
-            Ball collidedBall = other.GetComponent<Ball>();
-            OnBallEnter.Invoke(collidedBall);
+            if (other.gameObject.GetComponent<ICollide>() != null && other.gameObject.CompareTag("Ball"))
+            {
+                OnTriggerActive.Invoke();
+                Ball collidedBall = other.GetComponent<Ball>();
+                OnBallEnter.Invoke(collidedBall);
+            }
+
+            if (other.gameObject.GetComponent<PowerUp>() != null)
+            {
+                GameScene gameScene = GameManager.Instance.SceneManager.CurrentScene as GameScene;
+                gameScene.PowerUpsManager.RemovePowerUp(other.gameObject.GetComponent<PowerUp>());
+            }
         }
 
-        if (other.gameObject.GetComponent<PowerUp>() != null)
-        {
-            GameScene gameScene = GameManager.Instance.SceneManager.CurrentScene as GameScene;
-            gameScene.PowerUpsManager.RemovePowerUp(other.gameObject.GetComponent<PowerUp>());
-        }
+        #endregion
     }
-
 }

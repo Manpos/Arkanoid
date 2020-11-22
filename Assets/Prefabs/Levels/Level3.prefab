@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 630443581364587596}
   - component: {fileID: 4449625892460504436}
   m_Layer: 5
-  m_Name: Level2
+  m_Name: Level3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -157,7 +157,7 @@ MonoBehaviour:
       m_Calls: []
   _parent: {fileID: 630443581364587596}
   _destroyableBlocksParent: {fileID: 630443581364587596}
-  _nextLevel: 2
+  _nextLevel: -1
 --- !u!1 &4340942144291079795
 GameObject:
   m_ObjectHideFlags: 0

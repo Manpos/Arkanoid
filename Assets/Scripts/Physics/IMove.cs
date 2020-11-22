@@ -6,5 +6,5 @@ public interface IMove
 {
     void Movement();
     
-    void AppliedForce(Vector2 direction);
+    void UpdateDirection(Vector2 direction);
 }

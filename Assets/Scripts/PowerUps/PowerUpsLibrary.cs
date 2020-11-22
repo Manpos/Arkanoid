@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using PowerUps;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/PowerUpsLibrary", order = 1)]

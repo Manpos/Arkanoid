@@ -2,26 +2,27 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class GamePadInput : BaseInput
+namespace Input
 {
-    // Start is called before the first frame update
-    public override void Initialize()
+    public class GamePadInput : BaseInput
     {
-        _buttonCallbacks = new Dictionary<KeyCode, UnityEvent>()
+        /// <summary>
+        /// Link the joystick buttons to the callback events
+        /// </summary>
+        public override void Initialize()
         {
-            [KeyCode.Joystick1Button2] = LeftButtonCallback,
-            [KeyCode.LeftArrow] = LeftButtonCallback,
-            
-            [KeyCode.Joystick1Button1] = RightButtonCallback,
-            [KeyCode.RightArrow] = RightButtonCallback,
-            
-            [KeyCode.Joystick1Button3] = UpButtonCallback,
-            [KeyCode.UpArrow] = UpButtonCallback,
-            
-            [KeyCode.Joystick1Button0] = DownButtonCallback,
-            [KeyCode.DownArrow] = DownButtonCallback,
-            
-            [KeyCode.Escape] = ResetButtonCallback, 
-        };
+            _buttonCallbacks = new Dictionary<KeyCode, UnityEvent>()
+            {
+                [KeyCode.Joystick1Button2] = LeftButtonCallback,
+
+                [KeyCode.Joystick1Button1] = RightButtonCallback,
+
+                [KeyCode.Joystick1Button3] = UpButtonCallback,
+
+                [KeyCode.Joystick1Button0] = DownButtonCallback,
+
+                [KeyCode.Joystick1Button5] = ResetButtonCallback, 
+            };
+        }
     }
 }

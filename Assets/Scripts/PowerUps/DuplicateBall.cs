@@ -1,29 +1,23 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using Scenes;
 
-public class DuplicateBall : PowerUp
+namespace PowerUps
 {
-    private GameScene _gameScene;
-    public override void OnPickedItem()
+    public class DuplicateBall : PowerUp
     {
-        _gameScene = GameManager.Instance.SceneManager.CurrentScene as GameScene;
-        SecondBall();
-    }
+        public override void OnPickedItem()
+        {
+            _gameScene = GameManager.Instance.SceneManager.CurrentScene as GameScene;
+            SecondBall();
+        }
 
-    protected override void OnResetPowerUp()
-    {
-        
-    }
+        protected override void OnResetPowerUp() { }
 
-    public override void DuplicatedPowerUp(PowerUp previousPowerUp)
-    {
-        
-    }
+        public override void DuplicatedPowerUp(PowerUp previousPowerUp) { }
 
-    private void SecondBall()
-    {
-        _gameScene.InstantiateBall();
-        _gameScene.PowerUpsManager.RemovePowerUp(this);
+        private void SecondBall()
+        {
+            _gameScene.InstantiateBall();
+            _gameScene.PowerUpsManager.RemovePowerUp(this);
+        }
     }
 }

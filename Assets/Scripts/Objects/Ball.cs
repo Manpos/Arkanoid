@@ -1,56 +1,67 @@
-﻿using System;
+﻿using Physics;
 using UnityEngine;
 
-public class Ball : MovingObject, ICollide
+namespace Objects
 {
-    [SerializeField]
-    private Vector2 _initialDirection;
-
-    public Vector2 InitialDirection => _initialDirection;
-
-    private Vector3 _initialPosition;
-
-    public Vector3 InitialPosition => _initialPosition;
-
-    private Vector2 _previousDirection;
-
-    private void Awake()
+    public class Ball : MovingObject, ICollide
     {
-        _initialPosition = transform.position;
-        _previousDirection = _initialDirection;
-    }
+        #region Serialized Fields
 
-    private void Start()
-    {
-        PhysicsManager.OnPhysics.AddListener(Movement);
-        AppliedForce(_previousDirection);
-    }
+        [SerializeField]
+        private Vector2 _initialDirection;
 
-    private void Update()
-    {
-        AppliedForce(_previousDirection);
-    }
+        #endregion
 
-    public void ResetDirection()
-    {
-        _previousDirection = _initialDirection;
-    }
+        #region Standard Attributes
+        
+        private Vector2 _currentDirection;
 
-    public void ResetPosition()
-    {
-        transform.position = _initialPosition;
-    }
+        #endregion
 
-    public void Collision(Vector2 normal)
-    {
-        _previousDirection = ReflectionVector(normal.normalized, _previousDirection);
-    }
-
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.GetComponent<ICollide>() != null)
+        #region API Methods
+        
+        private void Awake()
         {
-            Collision(other.GetContact(0).normal);
+            _currentDirection = _initialDirection;
         }
+
+        private void Start()
+        {
+            PhysicsManager.OnPhysics.AddListener(Movement);
+            UpdateDirection(_currentDirection);
+        }
+
+        private void Update()
+        {
+            if(_appliedForces.Count == 0) UpdateDirection(_currentDirection);
+        }
+        
+        public void Collision(Vector2 normal)
+        {
+            _currentDirection = ReflectionVector(normal.normalized, _currentDirection);
+        }
+
+        #endregion
+
+        #region Other methods
+
+        private void OnCollisionEnter2D(Collision2D other)
+        {
+            if (other.gameObject.GetComponent<ICollide>() == null)
+            {
+                return;
+            }
+
+            Vector2 normalAverage = Vector2.zero;
+            foreach (ContactPoint2D contact in other.contacts)
+            {
+                normalAverage += contact.normal;
+            }
+
+            normalAverage /= other.contacts.Length;
+            Collision(normalAverage);
+        }
+
+        #endregion
     }
 }

@@ -1,94 +1,134 @@
 ﻿using System.Collections;
+using Physics;
+using Scenes;
 using UnityEngine;
 using UnityEngine.UI;
 
-public abstract class PowerUp : MovingObject, IPickable
+namespace PowerUps
 {
-    [SerializeField]
-    protected Image _powerUpImage;
+    public abstract class PowerUp : MovingObject, IPickable
+    {
+        #region Serialized Fields
 
-    [SerializeField]
-    protected Collider2D _collider;
+        /// <summary>
+        /// Power up image
+        /// </summary>
+        [SerializeField]
+        protected Image _powerUpImage;
 
-    [SerializeField]
-    protected float _maxTime;
+        /// <summary>
+        /// Power up collider
+        /// </summary>
+        [SerializeField]
+        protected Collider2D _collider;
+
+        /// <summary>
+        /// Elements displayed in the power up
+        /// </summary>
+        [SerializeField]
+        protected GameObject _innerElements;
+
+        /// <summary>
+        /// Power up max time value
+        /// </summary>
+        [SerializeField]
+        protected float _maxTime;
     
-    /// <summary>
-    /// Spawn possibility rate on scale from 0 to 1
-    /// </summary>
-    [SerializeField]
-    private float _spawnRate;
+        /// <summary>
+        /// Spawn possibility rate on scale from 0 to 1
+        /// </summary>
+        [SerializeField]
+        private float _spawnRate;
 
-    private float _timeRemaining;
+        #endregion
 
-    private bool _activeTimer;
+        #region Standard Attributes
 
-    private GameScene _gameScene;
+        private float _timeRemaining;
 
-    public float SpawnRate => _spawnRate;
+        private bool _activeTimer;
 
-    public abstract void OnPickedItem();
+        protected GameScene _gameScene;
 
-    protected abstract void OnResetPowerUp();
+        #endregion
+
+        #region Consultors
+
+        public float SpawnRate => _spawnRate;
+
+        #endregion
+
+        #region API Methods
+        
+        public abstract void OnPickedItem();
+
+        protected abstract void OnResetPowerUp();
 
         private void Start()
-    {
-        _gameScene = GameManager.Instance.SceneManager.CurrentScene as GameScene;
-        PhysicsManager.OnPhysics.AddListener(Movement);
-    }
-
-    private void Update()
-    {
-        AppliedForce(Vector2.down);
-        if (_activeTimer) TimerUpdate();
-    }
-
-    protected void OnTriggerEnter2D(Collider2D other)
-    {
         {
-            if (other.gameObject.CompareTag("Player"))
+            _gameScene = GameManager.Instance.SceneManager.CurrentScene as GameScene;
+            PhysicsManager.OnPhysics.AddListener(Movement);
+        }
+
+        private void Update()
+        {
+            UpdateDirection(Vector2.down);
+            if (_activeTimer) TimerUpdate();
+        }
+        
+        public virtual void DuplicatedPowerUp(PowerUp previousPowerUp)
+        {
+            DestroyPowerUp();
+        }
+
+        public void DestroyPowerUp()
+        {
+            OnResetPowerUp();
+            _gameScene.DestroyPowerUp(this);
+        }
+
+        public void UpdateTimerValue(float time)
+        {
+            _timeRemaining = time;
+        }
+
+        #endregion
+
+        #region Other Methods
+
+        protected void OnTriggerEnter2D(Collider2D other)
+        {
             {
-                _powerUpImage.enabled = false;
-                _collider.enabled = false;
-                
-                SetUpTimer();
+                if (other.gameObject.CompareTag("Player"))
+                {
+                    _powerUpImage.enabled = false;
+                    _collider.enabled = false;
+                    _innerElements.SetActive(false);
+                    SetUpTimer();
+                }
             }
         }
-    }
 
-    public virtual void DuplicatedPowerUp(PowerUp previousPowerUp)
-    {
-        DestroyPowerUp();
-    }
+        protected void TimerUpdate()
+        {
+            _timeRemaining -= Time.deltaTime;
+        }
 
-    protected void TimerUpdate()
-    {
-        _timeRemaining -= Time.deltaTime;
-    }
+        private void SetUpTimer()
+        {
+            _gameScene.PowerUpsManager.AddPowerUp(this);
+            _timeRemaining = _maxTime;
+            _activeTimer = true;
+            StartCoroutine(TimerEnd());
+        }
 
-    private void SetUpTimer()
-    {
-        _gameScene.PowerUpsManager.AddPowerUp(this);
-        _timeRemaining = _maxTime;
-        _activeTimer = true;
-        StartCoroutine(TimerEnd());
-    }
+        private IEnumerator TimerEnd()
+        {
+            yield return new WaitUntil(() => _timeRemaining <= 0f);
+            _gameScene.PowerUpsManager.RemovePowerUp(this);
+            OnResetPowerUp();
+        }
 
-    private IEnumerator TimerEnd()
-    {
-        yield return new WaitUntil(() => _timeRemaining <= 0f);
-        _gameScene.PowerUpsManager.RemovePowerUp(this);
-        OnResetPowerUp();
+        #endregion
     }
-
-    public void DestroyPowerUp()
-    {
-        _gameScene.DestroyPowerUp(this);
-    }
-
-    public void UpdateTimerValue(float time)
-    {
-        _timeRemaining = time;
-    }
-
 }

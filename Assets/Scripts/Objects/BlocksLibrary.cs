@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Objects;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/BlocksLibrary", order = 1)]

@@ -1,14 +1,24 @@
 ﻿using UnityEngine;
 
-public abstract class Controller : MonoBehaviour
+namespace Input
 {
-    public abstract void Left();
+    /// <summary>
+    /// Class where all the input related actions must be introduced
+    /// </summary>
+    public abstract class Controller : MonoBehaviour
+    {
+        #region API Methods
+        
+        public abstract void Left();
 
-    public abstract void Right();
+        public abstract void Right();
 
-    public abstract void Up();
+        public abstract void Up();
     
-    public abstract void Down();
+        public abstract void Down();
 
-    public abstract void ResetGame();
+        public abstract void ResetGame();
+        
+        #endregion
+    }
 }

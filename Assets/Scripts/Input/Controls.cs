@@ -1,15 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class Controls
+﻿
+namespace Input
 {
-    public enum Control
+    public class Controls
     {
-        Left,
-        Right,
-        Up,
-        Down,
-        Reset,
+        public enum Control
+        {
+            Left,
+            Right,
+            Up,
+            Down,
+            Reset,
+        }
     }
 }

@@ -2,43 +2,91 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public abstract class BaseInput : MonoBehaviour
+namespace Input
 {
-    protected Dictionary<KeyCode, UnityEvent> _buttonCallbacks;
-
-    protected UnityEvent LeftButtonCallback = new UnityEvent();
-    protected UnityEvent RightButtonCallback = new UnityEvent();
-    protected UnityEvent UpButtonCallback = new UnityEvent();
-    protected UnityEvent DownButtonCallback = new UnityEvent();
-
-    protected UnityEvent ResetButtonCallback = new UnityEvent();
-    
-    public Dictionary<Controls.Control, UnityEvent> _controlsCallback;
-    
-    
-
-    public void CheckPressedKeys()
+    public abstract class BaseInput
     {
-        foreach (KeyCode key in _buttonCallbacks.Keys)
+        #region Events
+
+        /// <summary>
+        /// Event to be executed when the input linked to the Left action is pressed
+        /// </summary>
+        protected UnityEvent LeftButtonCallback = new UnityEvent();
+        /// <summary>
+        /// Event to be executed when the input linked to the Right action is pressed
+        /// </summary>
+        protected UnityEvent RightButtonCallback = new UnityEvent();
+        /// <summary>
+        /// Event to be executed when the input linked to the Up action is pressed
+        /// </summary>
+        protected UnityEvent UpButtonCallback = new UnityEvent();
+        /// <summary>
+        /// Event to be executed when the input linked to the Down action is pressed
+        /// </summary>
+        protected UnityEvent DownButtonCallback = new UnityEvent();
+
+        /// <summary>
+        /// Event to be executed when the input linked to the Reset action is pressed
+        /// </summary>
+        protected UnityEvent ResetButtonCallback = new UnityEvent();
+
+        #endregion
+
+        #region StandardAttributes
+        
+        /// <summary>
+        /// Dictionary linking the unity keycode to a certain button callback
+        /// </summary>
+        protected Dictionary<KeyCode, UnityEvent> _buttonCallbacks;
+        
+        /// <summary>
+        /// Dictionary linking the controls to the callbacks to be executed when pressing those controls
+        /// </summary>
+        private Dictionary<Controls.Control, UnityEvent> _controlsCallback;
+
+        #endregion
+
+        #region Consultors and Modifiers
+    
+        /// <summary>
+        /// Dictionary linking the controls to the callbacks to be executed when pressing those controls
+        /// </summary>
+        public Dictionary<Controls.Control, UnityEvent> ControlsCallback => _controlsCallback;
+
+        #endregion
+
+        #region API Methods
+        
+        /// <summary>
+        /// Function checking if any of the registered inputs has been pressed
+        /// </summary>
+        public void CheckPressedKeys()
         {
-            if (Input.GetKey(key))
+            foreach (KeyCode key in _buttonCallbacks.Keys)
             {
-                _buttonCallbacks[key].Invoke();
+                if (UnityEngine.Input.GetKey(key))
+                {
+                    _buttonCallbacks[key].Invoke();
+                }
             }
         }
-    }
+        
+        /// <summary>
+        /// Function to initialize the input configurations for each input device
+        /// </summary>
+        public abstract void Initialize();
 
-    private void Awake()
-    {
-        _controlsCallback = new Dictionary<Controls.Control, UnityEvent>
+        protected BaseInput()
         {
-            [Controls.Control.Left] = LeftButtonCallback,
-            [Controls.Control.Right] = RightButtonCallback,
-            [Controls.Control.Up] = UpButtonCallback,
-            [Controls.Control.Down] = DownButtonCallback,
-            [Controls.Control.Reset] = ResetButtonCallback,
-        };
+            _controlsCallback = new Dictionary<Controls.Control, UnityEvent>
+            {
+                [Controls.Control.Left] = LeftButtonCallback,
+                [Controls.Control.Right] = RightButtonCallback,
+                [Controls.Control.Up] = UpButtonCallback,
+                [Controls.Control.Down] = DownButtonCallback,
+                [Controls.Control.Reset] = ResetButtonCallback,
+            };
+        }
+        #endregion
     }
-
-    public abstract void Initialize();
 }
